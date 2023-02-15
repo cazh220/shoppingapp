@@ -1,0 +1,19 @@
+{
+    "id": "s-region-slider",
+    "name": "region-slider",
+    "version": "1.8",
+    "description": "双向滑动条,兼容多h5,nvue,以及多平台的小程序",
+    "keywords": [
+        "双向滑动",
+        "slider",
+        "区间滑动",
+        "slider区间滑动",
+        "小程序双向滑动"
+    ],
+    "dcloudext": {
+        "category": [
+            "前端组件",
+            "通用组件"
+        ]
+    }
+}

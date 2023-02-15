@@ -1,0 +1,26 @@
+{
+    "name" : "shoppingapp",
+    "appid" : "wx7978277e29ab743c",
+    "description" : "",
+    "versionName" : "1.0.0",
+    "versionCode" : "100",
+    "transformPx" : false,
+    "mp-weixin" : {
+        "appid" : "wx7978277e29ab743c",
+        "setting" : {
+            "urlCheck" : false,
+            "es6" : true,
+            "postcss" : true
+        },
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "允许使用您的定位，以获取附近的环卫信息～"
+            }
+        },
+        "sitemapLocation" : "sitemap.json",
+        "usingComponents" : true
+    },
+    "optimization" : {
+        "subPackages" : true
+    }
+}

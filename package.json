@@ -1,0 +1,60 @@
+{
+  "name": "huanwei-wxsp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "npm run dev:h5",
+    "build": "npm run build:h5",
+    "dev:mp-weixin": "cross-env NODE_ENV=development UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch",
+    "build:mp-weixin": "cross-env NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build",
+    "info": "node node_modules/@dcloudio/vue-cli-plugin-uni/commands/info.js",
+    "serve:quickapp-native": "node node_modules/@dcloudio/uni-quickapp-native/bin/serve.js",
+    "test:mp-weixin": "cross-env UNI_PLATFORM=mp-weixin jest -i"
+  },
+  "dependencies": {
+    "@dcloudio/uni-app-plus": "^2.0.0-32920210927002",
+    "@dcloudio/uni-h5": "^2.0.0-32920210927002",
+    "@dcloudio/uni-helper-json": "*",
+    "@dcloudio/uni-i18n": "^2.0.0-32920210927002",
+    "@dcloudio/uni-mp-weixin": "^2.0.0-32920210927002",
+    "@dcloudio/uni-quickapp-native": "^2.0.0-32920210927002",
+    "@dcloudio/uni-quickapp-webview": "^2.0.0-32920210927002",
+    "@dcloudio/uni-stat": "^2.0.0-32920210927002",
+    "@vue/shared": "^3.0.0",
+    "core-js": "^3.6.5",
+    "flyio": "^0.6.2",
+    "regenerator-runtime": "^0.12.1",
+    "sass-loader": "^10.2.0",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@babel/runtime": "~7.12.0",
+    "@dcloudio/types": "*",
+    "@dcloudio/uni-automator": "^2.0.0-32920210927002",
+    "@dcloudio/uni-cli-i18n": "^2.0.0-32920210927002",
+    "@dcloudio/uni-cli-shared": "^2.0.0-32920210927002",
+    "@dcloudio/uni-migration": "^2.0.0-32920210927002",
+    "@dcloudio/uni-template-compiler": "^2.0.0-32920210927002",
+    "@dcloudio/vue-cli-plugin-hbuilderx": "^2.0.0-32920210927002",
+    "@dcloudio/vue-cli-plugin-uni": "^2.0.0-32920210927002",
+    "@dcloudio/vue-cli-plugin-uni-optimize": "^2.0.0-32920210927002",
+    "@dcloudio/webpack-uni-mp-loader": "^2.0.0-32920210927002",
+    "@dcloudio/webpack-uni-pages-loader": "^2.0.0-32920210927002",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-plugin-import": "^1.11.0",
+    "cross-env": "^7.0.2",
+    "mini-types": "*",
+    "miniprogram-api-typings": "*",
+    "postcss-comment": "^2.0.0",
+    "sass": "^1.43.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "browserslist": [
+    "Android >= 4.4",
+    "ios >= 9"
+  ],
+  "uni-app": {
+    "scripts": {}
+  }
+}
