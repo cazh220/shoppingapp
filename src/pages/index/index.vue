@@ -66,26 +66,28 @@ export default {
       this.formData = e.detail.value
       // 登录验证
       let data = {
-        username: this.formData.username || "",
+        phone: this.formData.username || "",
         password: this.formData.userpwd || ""
       }
-
+	  
+	  console.log('data', data)
+	  console.log('this.$api', this.$api)
       this.$api.login(data).then(
         res => {
-          uni.setStorageSync("token", res.data.token)
-          uni.setStorageSync("login_user", res.data)
-          uni.setStorageSync("account", res.data.account)
-          let permissionList = []
-          res.data.menus.forEach(item => {
-            item.children.forEach(sitem => {
-              sitem.children.forEach(ssitem => {
-                ssitem.children.forEach(sssitem => {
-                  if (sssitem.key) permissionList.push(sssitem.key)
-                })
-              })
-            })
-          })
-          uni.setStorageSync("permissionList", permissionList)
+          // uni.setStorageSync("token", res.data.token)
+          // uni.setStorageSync("login_user", res.data)
+          // uni.setStorageSync("account", res.data.account)
+          // let permissionList = []
+          // res.data.menus.forEach(item => {
+          //   item.children.forEach(sitem => {
+          //     sitem.children.forEach(ssitem => {
+          //       ssitem.children.forEach(sssitem => {
+          //         if (sssitem.key) permissionList.push(sssitem.key)
+          //       })
+          //     })
+          //   })
+          // })
+          // uni.setStorageSync("permissionList", permissionList)
           uni.switchTab({
             url: "../home/home"
           })
@@ -93,7 +95,7 @@ export default {
         },
         fail => {
           uni.showToast({
-            title: "账号或密码错误",
+            title: "账号或密码错误2",
             icon: "none",
             duration: 2000
           })

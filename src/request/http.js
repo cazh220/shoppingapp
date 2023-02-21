@@ -1,5 +1,5 @@
 // 请求封装
-var API_URL = "https://hwapij.jsyinghuan.com" // 请求地址
+var API_URL = "http://localhost:8080" // 请求地址
 if (process.env.NODE_ENV === "development")
 {
 	// API_URL = "https://apitestj.jsyinghuan.com" // 请求地址
@@ -17,27 +17,28 @@ let goLogin = () => {
 }
 
 // 免token接口组
-let exemptTokeUrls = [
-	"/apip/wxsp/v1/login",
-	"/apip/wxsp/v1/sendsms/sendsms",
-	"/apip/wxsp/v1/sendsms/wxspcheckverifycode",
-	"/apip/wxsp/v1/wxspaccount/updatepassword"
-]
+// let exemptTokeUrls = [
+// 	"/login",
+// 	"/apip/wxsp/v1/sendsms/sendsms",
+// 	"/apip/wxsp/v1/sendsms/wxspcheckverifycode",
+// 	"/apip/wxsp/v1/wxspaccount/updatepassword"
+// ]
 
 export default (method, url, data) => {
 	return new Promise((resolve, reject) => {
-		const token = uni.getStorageSync('token') || ""
-		if (token || exemptTokeUrls.includes(url)) {
+		// const token = uni.getStorageSync('token') || ""
+		// if (token || exemptTokeUrls.includes(url)) {
+			// console.log("url", url)
+		// if (exemptTokeUrls.includes(url)) {
 			uni.request({
 					url: `${API_URL}${url}`,
 					data,
 					method: method || "GET",
-					header: {
-						token
-					}
+					header: {}
 				}) 
 				.then(data => {
 					const [error, res] = data
+					console.log("ERORR", error)
 					if (error) {
 						reject(error.msg)
 					} else {
@@ -56,9 +57,9 @@ export default (method, url, data) => {
 						}
 					}
 				})
-		} else {
-			goLogin()
-			reject("请登录")
-		}
+		// } else {
+		// 	goLogin()
+		// 	reject("请登录")
+		// }
 	})
 }

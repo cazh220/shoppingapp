@@ -2,34 +2,34 @@
 <template>
   <view class="container">
     <view class="login-bg">
-      <view class="exchangePrj" @click="switchProject">
+      <!-- <view class="exchangePrj" @click="switchProject">
         <text class="exchange">&#xe601;</text>
         <text class="prjname">{{ projectName }}</text>
-      </view>
+      </view> -->
       <view class="pichead uni-flex uni-row">
         <view class="text" style="-webkit-flex: 1; flex: 1">
-          <view>
+          <!-- <view>
             <image src="../../static/images/logo.png" class="login_pic"></image>
           </view>
           <view class="logo_title">
             <view class="main_title">城市的守护者</view>
             <view class="sub_title">10月26清洁工日 致敬环卫工人</view>
-          </view>
+          </view> -->
         </view>
-        <view class="text" style="-webkit-flex: 1; flex: 1">
+        <!-- <view class="text" style="-webkit-flex: 1; flex: 1">
           <image src="../../static/images/banner.png" class="picture"></image>
-        </view>
+        </view> -->
       </view>
     </view>
 
-    <view class="menu">
+    <!-- <view class="menu">
       <view :class="item.class + ' menu-card'" v-for="(item, index) in permissionMenu" :key="index" @click="onClickMenu(item)">
         <view class="menu-card-title">{{ item.title }}</view>
         <image class="menu-card-icon" :src="item.icon"></image>
       </view>
-    </view>
+    </view> -->
 
-    <view>
+    <!-- <view>
       <uni-popup ref="popup" type="bottom">
         <button @click="showCreate" class="popup_button">创建上报</button>
         <button @click="showRecord" class="popup_button">上报记录</button>
@@ -44,7 +44,13 @@
           取消
         </button>
       </uni-popup>
-    </view>
+    </view> -->
+	<view class="goods">
+		<view class="goods_title">
+			<view class="title">商品信息</view>
+			<view class="more" @click="more">更多>></view>
+		</view>
+	</view>
   </view>
 </template>
 
@@ -93,27 +99,42 @@ export default {
   computed: {
     permissionMenu() {
       console.log(this.menu, "this.menu")
-      return this.menu.filter(item => {
-        if (this.$com.getPermission(item.permission)) return item
-      })
+      // return this.menu.filter(item => {
+      //   if (this.$com.getPermission(item.permission)) return item
+      // })
     }
   },
   onLoad(option) {},
   onShow() {
-    this.projectId = uni.getStorageSync("projectId")
-    // 获取登录态基础信息
-    let login_user = uni.getStorageSync("login_user")
-    if (!login_user) {
+    // this.projectId = uni.getStorageSync("projectId")
+    // // 获取登录态基础信息
+    // let login_user = uni.getStorageSync("login_user")
+    // if (!login_user) {
       // 没有登录信息，跳转到登录界面
-      uni.redirectTo({
-        url: "../index/index"
-      })
-    } else {
-      this.projectId = login_user.project_id || 0
-      this.projectName = login_user.project_name || ""
-    }
+      // uni.redirectTo({
+      //   url: "../index/index"
+      // })
+    // } else {
+    //   this.projectId = login_user.project_id || 0
+    //   this.projectName = login_user.project_name || ""
+    // }
   },
   methods: {
+	//更多
+	more() {
+		console.log("更多")
+		uni.navigateTo({
+		  url: "../goods/goods_list"
+		})
+	},
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
     // 切换项目
     switchProject() {
       uni.navigateTo({
@@ -226,125 +247,17 @@ page {
   padding-right: 30rpx;
 }
 
-.login_pic {
-  width: 376rpx;
-  height: 86rpx;
-  margin-bottom: 20rpx;
-  /* height: 134rpx;
-		margin-left: -50rpx; */
+.goods_title {
+	padding: 20rpx 30rpx;
+	font-size: 30rpx;
+	font-weight: bold;
 }
 
-.picture {
-  width: 297rpx;
-  height: 272rpx;
-  margin-left: 30rpx;
+.title {
+	float: left;
 }
 
-.main_title {
-  color: #89d227;
-  font-size: 50rpx;
-  line-height: 80rpx;
-}
-
-.sub_title {
-  color: #ffffff;
-  font-size: 25rpx;
-  line-height: 80rpx;
-}
-
-.popup_button {
-  margin: 20rpx 20rpx;
-  color: #89d227;
-}
-
-@font-face {
-  font-family: "iconfont";
-  /* Project id 2110544 */
-  src: url("//at.alicdn.com/t/font_2110544_nkbjbxl002.woff2?t=1628229125636") format("woff2"),
-    url("//at.alicdn.com/t/font_2110544_nkbjbxl002.woff?t=1628229125636") format("woff"),
-    url("//at.alicdn.com/t/font_2110544_nkbjbxl002.ttf?t=1628229125636") format("truetype");
-}
-
-.exchange {
-  font-family: iconfont;
-  margin-left: 20rpx;
-  font-size: 50rpx;
-  color: #ffffff;
-  float: left;
-}
-
-.exchangePrj {
-  height: 50rpx;
-  line-height: 50rpx;
-  color: #ffffff;
-}
-
-.prjname {
-  height: 50rpx;
-  line-height: 50rpx;
-  margin-left: 10rpx;
-  float: left;
-}
-
-.menu {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 20px;
-
-  .menu-card {
-    width: 300rpx;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    padding: 0 5px;
-    box-shadow: 0px 2px 16px 1px rgba(0, 0, 0, 0.1);
-
-    .menu-card-title {
-      font-size: 32rpx;
-    }
-
-    .menu-card-icon {
-      width: 88rpx;
-      height: 88rpx;
-      margin: 12rpx 18rpx;
-      float: left;
-    }
-  }
-
-  .addoil {
-    background: #fef9f3 !important;
-  }
-
-  .repaire {
-    background: #f2f6ff !important;
-  }
-
-  .quanlity {
-    background: #fef9f3 !important;
-  }
-
-  .collection {
-    background: #f0f9f8 !important;
-  }
-  .vehicle {
-    background: #cbdcfc !important;
-  }
-  .facilitie {
-    background: #fef4f3 !important;
-  }
-  .personal {
-    background: #ecfbff !important;
-  }
-
-  .uav {
-    background: #fef4f3 !important;
-  }
-  .video {
-    background: #f0f9f8 !important;
-  }
+.more {
+	float: right;
 }
 </style>
