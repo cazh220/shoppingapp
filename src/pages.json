@@ -13,6 +13,12 @@
 			}
 		},
 		{
+			"path": "pages/goods/goods_list",
+			"style": {
+				"navigationBarTitleText": "商品列表"
+			}
+		},
+		{
 			"path": "pages/qualitys/report-record/report-record",
 			"style": {
 				"navigationBarTitleText": "上报记录",
@@ -91,7 +97,16 @@
 				"enablePullDownRefresh": false
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/goods/goods_detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "商品详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"subpackages": [{
 		"root": "template",
 		"pages": [{

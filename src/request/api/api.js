@@ -7,6 +7,7 @@ import qualitys from "./qualitys.js"
 import collection from "./collection.js"
 import message from "./message.js"
 import person from "./person.js"
+import goods from "./goods"
 
 
 const api = {
@@ -18,6 +19,7 @@ const api = {
   ...qualitys,
   ...collection,
   ...message,
+  ...goods,
   ...person
 }
 export default api

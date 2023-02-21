@@ -22,33 +22,17 @@
       </view>
     </view>
 
-    <!-- <view class="menu">
-      <view :class="item.class + ' menu-card'" v-for="(item, index) in permissionMenu" :key="index" @click="onClickMenu(item)">
-        <view class="menu-card-title">{{ item.title }}</view>
-        <image class="menu-card-icon" :src="item.icon"></image>
-      </view>
-    </view> -->
-
-    <!-- <view>
-      <uni-popup ref="popup" type="bottom">
-        <button @click="showCreate" class="popup_button">创建上报</button>
-        <button @click="showRecord" class="popup_button">上报记录</button>
-        <button @click="closePopup" style="margin: 10px 10px">取消</button>
-      </uni-popup>
-      <uni-popup ref="maintenancePopup" type="bottom">
-        <button @click="showMaintenance" class="popup_button">维修申请</button>
-        <button @click="showMaintenanceList" class="popup_button">
-          维修记录
-        </button>
-        <button @click="closemaintenancePopup" style="margin: 10px 10px">
-          取消
-        </button>
-      </uni-popup>
-    </view> -->
 	<view class="goods">
 		<view class="goods_title">
 			<view class="title">商品信息</view>
 			<view class="more" @click="more">更多>></view>
+		</view>
+		<view class="list">
+			 <uni-list>
+			 	<uni-list-item v-for="item in goods" :key="item.id" :title="item.name" :note="item.stock" thumb="https://web-assets.dcloud.net.cn/unidoc/zh/unicloudlogo.png"
+			 	 thumb-size="lg" :rightText="item.price" clickable @click="goodsDetail(item.id)"></uni-list-item>
+			</uni-list>
+
 		</view>
 	</view>
   </view>
@@ -58,171 +42,43 @@
 export default {
   data() {
     return {
-      projectId: 0,
-      projectName: "",
-      menu: [
-        {
-          title: "人员管理",
-          icon: "../../static/home/renyuan.png",
-          class: "personal",
-          type: "link",
-          link: "../../template/personal/personal",
-          permission: "PersonManagementModuleShow",
-        },
-        {
-          title: "设施管理",
-          icon: "../../static/home/sheshi.png",
-          class: "facilitie",
-          type: "link",
-          link: "../../template/collection/collection-gis/collection-gis",
-          permission: "FacilitieModuleShow"
-        },
-        {
-          title: "质量管理",
-          icon: "../../static/home/zhiliang.png",
-          class: "quanlity",
-          type: "event",
-          link: "../qualitys/index/index",
-          permission: "QuanlityModuleShow"
-        },
-        {
-          title: "车辆管理",
-          icon: "../../static/home/cheliang.png",
-          class: "vehicle",
-          type: "link",
-          link: "../../template/vehicle/vehicle",
-          permission: "VehicleModuleShow"
-        }
-      ]
+      goods: []
+
     }
   },
-  computed: {
-    permissionMenu() {
-      console.log(this.menu, "this.menu")
-      // return this.menu.filter(item => {
-      //   if (this.$com.getPermission(item.permission)) return item
-      // })
-    }
-  },
-  onLoad(option) {},
   onShow() {
-    // this.projectId = uni.getStorageSync("projectId")
-    // // 获取登录态基础信息
-    // let login_user = uni.getStorageSync("login_user")
-    // if (!login_user) {
-      // 没有登录信息，跳转到登录界面
-      // uni.redirectTo({
-      //   url: "../index/index"
-      // })
-    // } else {
-    //   this.projectId = login_user.project_id || 0
-    //   this.projectName = login_user.project_name || ""
-    // }
+	this.getGoods()
   },
   methods: {
 	//更多
 	more() {
-		console.log("更多")
 		uni.navigateTo({
 		  url: "../goods/goods_list"
 		})
 	},
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-    // 切换项目
-    switchProject() {
-      uni.navigateTo({
-        url: "../project/project?project_id=" + this.projectId
-      })
-    },
-    // 点击菜单
-    onClickMenu(item) {
-      switch (item.class) {
-        case "addoil":
-          // 加油管理
-          uni.navigateTo({
-            url: item.link
-          })
-          break
-        case "repaire":
-          // 维修
-          this.$refs.maintenancePopup.open("bottom")
-          break
-        case "quanlity":
-          // 质量
-          this.$refs.popup.open("bottom")
-          break
-        case "collection":
-          // 收运
-          uni.navigateTo({
-            url: item.link
-          })
-          break
-        case "vehicle":
-          // 车辆
-          uni.navigateTo({
-            url: item.link
-          })
-          break
-        case "facilitie":
-          // 设施
-          uni.navigateTo({
-            url: item.link
-          })
-          break
+	getGoods() {
+		let data = {page:1, name: ""}
+		this.$api.getGoodsList(data).then(
+		res => {
+			console.log(res)
+			this.goods = res.data.list.map(item => {
+				item.key = item.id
+				item.stock = "库存："+item.num
+				item.price = "价格：￥"+ item.price
+				return item
+			})
+		},
+		fail => {
+			
+		})
+	},
+	
+	goodsDetail(id) {
+		uni.navigateTo({
+			url: "../goods/goods_detail?id="+id
+		})
+	}
 
-        case "personal":
-          // 人员
-          uni.navigateTo({
-            url: item.link
-          })
-          break
-        default:
-          uni.navigateTo({
-            url: "#"
-          })
-      }
-    },
-    closePopup() {
-      this.$refs.popup.close()
-    },
-    showCreate() {
-      console.log("创建上报")
-      this.$refs.popup.close()
-      uni.navigateTo({
-        url: "../qualitys/create-report/create-report"
-      })
-    },
-    showRecord() {
-      this.$refs.popup.close()
-      uni.navigateTo({
-        url: "../qualitys/report-record/report-record"
-      })
-    },
-    // 维修申请
-    showMaintenance() {
-      uni.navigateTo({
-        url: "../maintenance/apply-maintenance"
-      })
-    },
-
-    // 维修记录
-    showMaintenanceList() {
-      uni.navigateTo({
-        url: "../maintenance/maintenance-record"
-      })
-    },
-
-    // 取消维修管理
-    closemaintenancePopup() {
-      this.$refs.maintenancePopup.close()
-    }
   }
 }
 </script>
@@ -259,5 +115,9 @@ page {
 
 .more {
 	float: right;
+}
+
+.list {
+	margin-top: 40rpx;
 }
 </style>
