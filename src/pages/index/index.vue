@@ -74,24 +74,6 @@ export default {
       this.$api.login(data).then(
         res => {
 		  uni.setStorageSync("userInfo", res.data)
-          // uni.setStorageSync("token", res.data.token)
-          // uni.setStorageSync("login_user", res.data)
-          // uni.setStorageSync("account", res.data.account)
-          // let permissionList = []
-          // res.data.menus.forEach(item => {
-          //   item.children.forEach(sitem => {
-          //     sitem.children.forEach(ssitem => {
-          //       ssitem.children.forEach(sssitem => {
-          //         if (sssitem.key) permissionList.push(sssitem.key)
-          //       })
-          //     })
-          //   })
-          // })
-          // uni.setStorageSync("permissionList", permissionList)
-		 //  this.$api.userDetail({phone: this.formData.username}).then(
-			
-		 //  )
-		  
           uni.switchTab({
             url: "../home/home"
           })

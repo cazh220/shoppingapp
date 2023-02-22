@@ -11,7 +11,7 @@
 					<uni-col :span="15">
 						<view class="userdetail">
 							<view class="name">{{ username }}</view>
-							<view class="mobile">{{ phone }}</view>
+							<view class="mobile">余额：￥{{ amount }}</view>
 						</view>
 					</uni-col>
 				</uni-row>
@@ -60,7 +60,7 @@ export default {
 			// 	type: 'chat-filled'
 			// },
 			username: '火苗',
-			phone: '13000000000',
+			amount: 0,
 			userimg: '../../static/images/avatar.png',
 			msgNums: 0, // 消息数量
 			badge: true
@@ -72,9 +72,9 @@ export default {
 		}
 	},
 	onLoad() {
-		let user = uni.getStorageSync('login_user') || {}
+		let user = uni.getStorageSync('userInfo') || {}
 		this.username = user.name || ''
-		this.phone = user.account || ''
+		this.amount = user.amount || 0
 		if (!user) {
 			// 没有获取到登录态信息，跳转到登录界面
 			uni.redirectTo({

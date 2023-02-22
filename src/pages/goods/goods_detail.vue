@@ -25,9 +25,9 @@
 				@buttonClick="buttonClick" />
 		</view>
 
-
+	
 		<!-- <uni-popup ref="popup" type="bottom" background-color="#fff">底部弹出 Popup</uni-popup> -->
-		<uni-popup ref="popup" type="share" safeArea backgroundColor="#fff">
+		<uni-popup ref="popup" type="bottom" safeArea backgroundColor="#fff">
 			<view class="confirm">
 				<view class="buy_num">
 					<uni-row class="demo-uni-row" :width="nvueWidth">
@@ -37,6 +37,25 @@
 						<uni-col :span="15">
 							<view class="demo-uni-col light">
 								<uni-number-box v-model="buy_num" @change="changeNum" />
+							</view>
+						</uni-col>
+					</uni-row>
+					<view class="confirm_order">
+						<button type="primary" style="background-color: #ffa200; border-radius: 10rpx;" @click="confirmOrder">确定</button>
+					</view>
+				</view>
+			</view>
+		</uni-popup>
+		<uni-popup ref="cart" type="bottom" safeArea backgroundColor="#fff">
+			<view class="confirm">
+				<view class="buy_num">
+					<uni-row class="demo-uni-row" :width="nvueWidth">
+						<uni-col :span="12">
+							<view class="demo-uni-col dark">商品</view>
+						</uni-col>
+						<uni-col :span="12">
+							<view class="demo-uni-col light">
+								数量：<uni-number-box v-model="buy_num" @change="changeNum" />
 							</view>
 						</uni-col>
 					</uni-row>
@@ -86,6 +105,7 @@
 		methods: {
 			onClick(e) {
 				console.log("onClick", e)
+				this.$refs.cart.open('bottom')
 				uni.showToast({
 					title: `点击${e.content.text}`,
 					icon: 'none'
