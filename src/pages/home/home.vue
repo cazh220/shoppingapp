@@ -2,24 +2,23 @@
 <template>
   <view class="container">
     <view class="login-bg">
+		<view class="uni-margin-wrap">
+			<swiper class="swiper" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval"
+				:duration="duration">
+				<swiper-item>
+					<image style=" background-color: #eeeeee;"
+						mode="scaleToFill" src="https://web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg" ></image>
+				</swiper-item>
+			</swiper>
+		</view>
       <!-- <view class="exchangePrj" @click="switchProject">
         <text class="exchange">&#xe601;</text>
         <text class="prjname">{{ projectName }}</text>
       </view> -->
-      <view class="pichead uni-flex uni-row">
+      <!-- <view class="pichead uni-flex uni-row">
         <view class="text" style="-webkit-flex: 1; flex: 1">
-          <!-- <view>
-            <image src="../../static/images/logo.png" class="login_pic"></image>
-          </view>
-          <view class="logo_title">
-            <view class="main_title">城市的守护者</view>
-            <view class="sub_title">10月26清洁工日 致敬环卫工人</view>
-          </view> -->
         </view>
-        <!-- <view class="text" style="-webkit-flex: 1; flex: 1">
-          <image src="../../static/images/banner.png" class="picture"></image>
-        </view> -->
-      </view>
+      </view> -->
     </view>
 
 	<view class="goods">
@@ -29,7 +28,7 @@
 		</view>
 		<view class="list">
 			 <uni-list>
-			 	<uni-list-item v-for="item in goods" :key="item.id" :title="item.name" :note="item.stock" thumb="https://web-assets.dcloud.net.cn/unidoc/zh/unicloudlogo.png"
+			 	<uni-list-item v-for="(item, index) in goods" :key="item.id" v-if="index < 5" :title="item.name" :note="item.stock" thumb="https://web-assets.dcloud.net.cn/unidoc/zh/unicloudlogo.png"
 			 	 thumb-size="lg" :rightText="item.price" clickable @click="goodsDetail(item.id)"></uni-list-item>
 			</uni-list>
 
@@ -42,6 +41,11 @@
 export default {
   data() {
     return {
+		background: ['color1', 'color2', 'color3'],
+		indicatorDots: true,
+		autoplay: true,
+		interval: 2000,
+		duration: 500,
       goods: []
 
     }
@@ -61,7 +65,7 @@ export default {
 		this.$api.getGoodsList(data).then(
 		res => {
 			console.log(res)
-			this.goods = res.data.list.map(item => {
+			this.goods = res.data.list.map((item, key) => {
 				item.key = item.id
 				item.stock = "库存："+item.num
 				item.price = "价格：￥"+ item.price
@@ -89,13 +93,33 @@ page {
   font-size: 28rpx;
 }
 
-.login-bg {
-  min-height: 452rpx;
-  background: #2d89fb;
-  padding: 10rpx 0rpx 79rpx 0rpx;
-  background: url("https://image.jsyinghuan.com/huanwei/login-bg.png");
-  background-size: 100% 100%;
-}
+.uni-margin-wrap {
+		width: 690rpx;
+		width: 100%;
+	}
+
+	.swiper {
+		height: 400rpx;
+	}
+
+	.swiper-item {
+		display: block;
+		height: 400rpx;
+		line-height: 400rpx;
+		text-align: center;
+	}
+
+	.swiper-list {
+		margin-top: 40rpx;
+		margin-bottom: 0;
+	}
+// .login-bg {
+//   min-height: 250rpx;
+//   background: #2d89fb;
+//   padding: 10rpx 0rpx 79rpx 0rpx;
+//   background: url("https://image.jsyinghuan.com/huanwei/login-bg.png");
+//   background-size: 100% 100%;
+// }
 
 .pichead {
   padding-top: 150rpx;

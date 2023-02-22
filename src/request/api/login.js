@@ -3,6 +3,7 @@ import http from "../http"
 
 export default {
 	login: data => http("POST", "/login", data), // 登录
+	userDetail: data => http("POST", "/user/detail", data), // 用户信息
 	
 	
 	

@@ -22,7 +22,8 @@
 			<view class="list">
 				<uni-list :border="false">
 					<uni-list-item thumb="https://image.jsyinghuan.com/huanweiwxsp/editpwdicon.png" thumb-size="sm" showArrow title="重置密码" clickable @click="resetPassword" />
-					<uni-list-item
+					<uni-list-item thumb="https://image.jsyinghuan.com/huanweiwxsp/message.png" thumb-size="sm" showArrow title="我的订单" clickable @click="mineOrder" />
+					<!-- <uni-list-item
 						v-if="MessagesModuleShow"
 						class="ulist"
 						:border="true"
@@ -35,7 +36,7 @@
 						clickable
 						badgeType="error"
 						@click="viewMessages"
-					/>
+					/> -->
 				</uni-list>
 			</view>
 
@@ -94,10 +95,16 @@ export default {
 			})
 		},
 		// 查看消息
-		viewMessages(e) {
-			console.log('查看消息', e)
+		// viewMessages(e) {
+		// 	console.log('查看消息', e)
+		// 	uni.navigateTo({
+		// 		url: '../message/message'
+		// 	})
+		// },
+		// 我的订单
+		mineOrder() {
 			uni.navigateTo({
-				url: '../message/message'
+				url: '../order/order_list/order_list'
 			})
 		},
 		// 退出

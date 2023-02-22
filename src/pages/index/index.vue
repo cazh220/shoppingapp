@@ -71,9 +71,9 @@ export default {
       }
 	  
 	  console.log('data', data)
-	  console.log('this.$api', this.$api)
       this.$api.login(data).then(
         res => {
+		  uni.setStorageSync("userInfo", res.data)
           // uni.setStorageSync("token", res.data.token)
           // uni.setStorageSync("login_user", res.data)
           // uni.setStorageSync("account", res.data.account)
@@ -88,6 +88,10 @@ export default {
           //   })
           // })
           // uni.setStorageSync("permissionList", permissionList)
+		 //  this.$api.userDetail({phone: this.formData.username}).then(
+			
+		 //  )
+		  
           uni.switchTab({
             url: "../home/home"
           })
