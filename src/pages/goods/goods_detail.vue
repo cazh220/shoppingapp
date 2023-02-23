@@ -130,37 +130,62 @@
 				],
 				goods: null,
 				buy_num: 1,
-				carts: [{
-						goods_id: 2,
-						goods_name: "苹果",
-						num: 3
-					},
-					{
-						goods_id: 8,
-						goods_name: "西瓜",
-						num: 1
-					}
-				]
+				carts: [
+				],
+				user_id: 0
 			}
 		},
 		onLoad(option) {
 			console.log('option', option)
+			let userInfo = uni.getStorageSync("userInfo")
+			this.user_id = userInfo.id || 0
 			this.goodsDetail(option)
 			this.cartsInfo()
 		},
 		methods: {
 			// 获取购物车信息
 			cartsInfo() {
-				this.options[0].info = this.carts.length
+				// let userInfo = uni.getStorageSync("userInfo")
+				this.$api.getCart({user_id: this.user_id}).then(
+				res => {
+					console.log(res)
+					res.data.list.map(item => {
+						this.carts.push({
+							goods_id: item.goods_id,
+							goods_name: item.goods_name,
+							num: item.num,
+						})
+					})
+					this.options[0].info = this.carts.length
+				},
+				fail => {
+					
+				})
 			},
 			onClick(e) {
 				console.log("onClick", e)
-				// 调用购物车的接口
-				this.$refs.cart.open('bottom')
-				uni.showToast({
-					title: `点击${e.content.text}`,
-					icon: 'none'
+				
+				// let userInfo = uni.getStorageSync("userInfo")
+				this.$api.getCart({user_id: this.user_id}).then(
+				res => {
+					this.carts = []
+					res.data.list.map(item => {
+						this.carts.push({
+							goods_id: item.goods_id,
+							goods_name: item.goods_name,
+							num: item.num,
+						})
+					})
+					this.$refs.cart.open('bottom')
+					this.options[0].info = this.carts.length
+				},
+				fail => {
+					
 				})
+				// uni.showToast({
+				// 	title: `点击${e.content.text}`,
+				// 	icon: 'none'
+				// })
 			},
 			// 加入购物车或立即购买
 			buttonClick(e) {
@@ -171,6 +196,8 @@
 				} else {
 					// 判断购物车中是否存在此商品
 					// 如存在,则不增加
+					
+					
 					let ids = []
 					this.carts.map(item => {
 						ids.push(item.goods_id)
@@ -188,12 +215,25 @@
 							goods_name: "",
 							num: 1
 						})
-
-						uni.showToast({
-							title: `已加入购物车`,
-							icon: 'none'
-						})
-						this.options[0].info++
+						// let userInfo = uni.getStorageSync("userInfo")
+						console.log("this.goods", this.goods)
+						let data = {
+							user_id: this.user_id,
+							goods_id: this.goods.id,
+							goods_name: this.goods.name,
+							num: 1
+						}
+						this.$api.addCart(data).then(
+						res => {
+							uni.showToast({
+								title: `已加入购物车`,
+								icon: 'none'
+							})
+							this.options[0].info++
+						},
+						fail => {
+							
+						})						
 					}
 
 
@@ -218,7 +258,7 @@
 			confirmOrder(e) {
 				let that = this
 				console.log(this.goods, this.buy_num)
-				let userInfo = uni.getStorageSync("userInfo")
+				// let userInfo = uni.getStorageSync("userInfo")
 				let goods = []
 				goods.push({
 					goods_id: this.goods.id,
@@ -226,7 +266,7 @@
 				})
 				let data = {
 					goods: goods,
-					user_id: userInfo.id
+					user_id: this.user_id
 				}
 				this.$api.createOrder(data).then(
 					res => {
@@ -246,8 +286,50 @@
 
 
 			},
-			clear() {},
-			cartOrder() {}
+			clear(mess) {
+				//
+				this.$api.clearCart({user_id: this.user_id}).then(res => {
+					if (mess != 1) {
+						uni.showToast({
+							title: `清空购物车成功`,
+							icon: 'none'
+						})
+					}
+					
+				}, fail=>{})
+				this.carts = []
+				this.options[0].info = 0
+			},
+			cartOrder() {
+				let goods = []
+				this.carts.map(item => {
+					goods.push({
+						goods_id: item.goods_id,
+						num: item.num
+					})
+				})
+				
+				let data = {
+					user_id: this.user_id,
+					goods: goods	
+				}
+				
+				this.$api.createOrder(data).then(res =>{
+					uni.showToast({
+						title: `下单成功`,
+						// icon: 'none'
+					})
+					this.clear(1)
+					this.$refs.cart.close()
+				},
+				fail => {
+					uni.showToast({
+						title: `下单失败`,
+						icon: 'none'
+					})
+				})
+				console.log(this.carts)
+			}
 		}
 	}
 </script>
