@@ -36,7 +36,7 @@
             <image class="flex-auto showpwd" :src="pwdUrl" @click="pwdBtn" mode="aspectFit" />
           </view>
           <view class="login_list button flex-between"><button type="primary" form-type="submit">登录</button></view>
-          <view class="fogetpwd_list fogetpwd flex-between"><navigator :url="forgetpwdUrl" hover-class="navigator-hover">没有账号？请注册</navigator></view>
+          <view class="fogetpwd_list fogetpwd flex-between"><navigator :url="registerUrl" hover-class="navigator-hover">没有账号？请注册</navigator></view>
         </form>
       </view>
     </view>
@@ -49,7 +49,7 @@ export default {
     return {
       isShowPwd: true,
       pwdUrl: "../../static/images/offpwd.png",
-      forgetpwdUrl: "../password/forgetpwd",
+      registerUrl: "./register",
       formData: {
         username: "",
         userpwd: ""

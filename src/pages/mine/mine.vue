@@ -23,20 +23,6 @@
 				<uni-list :border="false">
 					<uni-list-item thumb="https://image.jsyinghuan.com/huanweiwxsp/editpwdicon.png" thumb-size="sm" showArrow title="重置密码" clickable @click="resetPassword" />
 					<uni-list-item thumb="https://image.jsyinghuan.com/huanweiwxsp/message.png" thumb-size="sm" showArrow title="我的订单" clickable @click="mineOrder" />
-					<!-- <uni-list-item
-						v-if="MessagesModuleShow"
-						class="ulist"
-						:border="true"
-						thumb="https://image.jsyinghuan.com/huanweiwxsp/message.png"
-						thumb-size="sm"
-						:show-badge="badge"
-						:badge-text="msgNums"
-						showArrow
-						title="消息列表"
-						clickable
-						badgeType="error"
-						@click="viewMessages"
-					/> -->
 				</uni-list>
 			</view>
 
@@ -49,49 +35,43 @@
 export default {
 	data() {
 		return {
-			// resetPwdIcon: {
-			// 	color: '#4cd964',
-			// 	size: '24',
-			// 	type: 'locked-filled'
-			// },
-			// infoIcon: {
-			// 	color: '#4cd964',
-			// 	size: '24',
-			// 	type: 'chat-filled'
-			// },
 			username: '火苗',
 			amount: 0,
+			phone: '',
 			userimg: '../../static/images/avatar.png',
-			msgNums: 0, // 消息数量
-			badge: true
-		}
-	},
-	computed: {
-		MessagesModuleShow() {
-			return this.$com.getPermission('MessagesModuleShow')
 		}
 	},
 	onLoad() {
-		let user = uni.getStorageSync('userInfo') || {}
+		let user = uni.getStorageSync('userInfo') || ""
 		this.username = user.name || ''
 		this.amount = user.amount || 0
+		this.phone = user.phone || ''
 		if (!user) {
 			// 没有获取到登录态信息，跳转到登录界面
 			uni.redirectTo({
 				url: '../index/index'
 			})
 		}
+		this.userDetail()
 	},
 	onShow() {
-		this.$api.getUnreadMessage().then(res => {
-			this.msgNums = res.data || 0
-		})
 	},
 	methods: {
+		// 查询用户信息
+		userDetail() {
+			let that = this
+			this.$api.userDetail({phone: this.phone}).then(
+			res => {
+				that.amount = res.data.money
+			},
+			fail => {
+				
+			})
+		},
 		// 重置密码
 		resetPassword(e) {
 			uni.navigateTo({
-				url: '../password/editpwd?phone=' + this.phone
+				url: '../index/editpassword?phone=' + this.phone
 			})
 		},
 		// 查看消息
@@ -104,14 +84,14 @@ export default {
 		// 我的订单
 		mineOrder() {
 			uni.navigateTo({
-				url: '../order/order_list/order_list'
+				url: '../order/order'
+				// url: '../order/order_list/order_list'
 			})
 		},
 		// 退出
 		logout() {
 			// 销毁登录态storage
-			uni.removeStorageSync('token')
-			uni.removeStorageSync('login_user')
+			uni.removeStorageSync('userInfo')
 			uni.redirectTo({
 				url: '../index/index'
 			})

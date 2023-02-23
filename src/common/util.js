@@ -43,20 +43,7 @@ function formatTime(time) {
 	}).join(':')
 }
 
-function formatLocation(longitude, latitude) {
-	if (typeof longitude === 'string' && typeof latitude === 'string') {
-		longitude = parseFloat(longitude)
-		latitude = parseFloat(latitude)
-	}
 
-	longitude = longitude.toFixed(2)
-	latitude = latitude.toFixed(2)
-
-	return {
-		longitude: longitude.toString().split('.'),
-		latitude: latitude.toString().split('.')
-	}
-}
 var dateUtils = {
 	UNITS: {
 		'年': 31557600000,
@@ -96,7 +83,6 @@ var dateUtils = {
 
 module.exports = {
 	formatTime: formatTime,
-	formatLocation: formatLocation,
 	dateUtils: dateUtils,
 	validatePhone: validatePhone,
 	validatePrice: validatePrice

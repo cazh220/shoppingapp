@@ -3,8 +3,11 @@
 		<view class="uni-margin-wrap">
 			<swiper class="swiper" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval"
 				:duration="duration">
-				<swiper-item>
-					<view class="swiper-item uni-bg-red">A</view>
+				<swiper-item v-for="(item ,index) in pics" :key="index">
+					<view class="image-content">
+						<image style="background-color: #eeeeee; width: 100%;" mode="scaleToFill"
+							:src="item.src"></image>
+					</view>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -25,8 +28,7 @@
 				@buttonClick="buttonClick" />
 		</view>
 
-	
-		<!-- <uni-popup ref="popup" type="bottom" background-color="#fff">底部弹出 Popup</uni-popup> -->
+
 		<uni-popup ref="popup" type="bottom" safeArea backgroundColor="#fff">
 			<view class="confirm">
 				<view class="buy_num">
@@ -41,7 +43,9 @@
 						</uni-col>
 					</uni-row>
 					<view class="confirm_order">
-						<button type="primary" style="background-color: #ffa200; border-radius: 10rpx;" @click="confirmOrder">确定</button>
+						<button type="primary"
+							style="background-color: #ffa200; border-radius: 10rpx; font-size: 28rpx; height: 80rpx;"
+							@click="confirmOrder">确定</button>
 					</view>
 				</view>
 			</view>
@@ -49,18 +53,40 @@
 		<uni-popup ref="cart" type="bottom" safeArea backgroundColor="#fff">
 			<view class="confirm">
 				<view class="buy_num">
-					<uni-row class="demo-uni-row" :width="nvueWidth">
-						<uni-col :span="12">
-							<view class="demo-uni-col dark">商品</view>
+					<uni-section class="mb-10" title="购物车商品" titleColor="red" sub-title="" type="line">购物车商品
+					</uni-section>
+
+					<uni-row class="" :width="nvueWidth" v-for="item in carts">
+						<uni-col :span="10">
+							<view class="goods_list">{{item.goods_name}}</view>
 						</uni-col>
-						<uni-col :span="12">
-							<view class="demo-uni-col light">
-								数量：<uni-number-box v-model="buy_num" @change="changeNum" />
+						<uni-col :span="14">
+							<view class="goods_list">
+								<view class="" style="float: left;">
+									数量：
+								</view>
+								<view class="">
+									<uni-number-box v-model="item.num" @change="changeNum" />
+								</view>
+
 							</view>
 						</uni-col>
 					</uni-row>
 					<view class="confirm_order">
-						<button type="primary" style="background-color: #ffa200; border-radius: 10rpx;" @click="confirmOrder">确定</button>
+						<uni-row class="demo-uni-row" :width="nvueWidth">
+							<uni-col :span="12">
+								<button type="primary"
+									style="background-color: #ffa200; border-radius: 10rpx; height: 80rpx; font-size: 28rpx; margin-bottom: 20rpx;"
+									@click="clear">清空</button>
+							</uni-col>
+							<uni-col :span="12">
+								<button type="primary"
+									style="background-color: #ffa200; border-radius: 10rpx; height: 80rpx; font-size: 28rpx; margin-bottom: 20rpx;"
+									@click="cartOrder">下单</button>
+							</uni-col>
+						</uni-row>
+
+
 					</view>
 				</view>
 			</view>
@@ -73,7 +99,15 @@
 	export default {
 		data() {
 			return {
-				background: ['color1', 'color2', 'color3'],
+				pics: [
+					{
+						src: 'https://web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg',
+					},
+					{
+						src: 'https://web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg',
+					}
+				],
+				// background: ['color1', 'color2', 'color3'],
 				indicatorDots: true,
 				autoplay: true,
 				interval: 2000,
@@ -81,7 +115,7 @@
 				options: [{
 					icon: 'cart',
 					text: '购物车',
-					info: 2
+					info: 0
 				}],
 				buttonGroup: [{
 						text: '加入购物车',
@@ -95,27 +129,76 @@
 					}
 				],
 				goods: null,
-				buy_num: 1
+				buy_num: 1,
+				carts: [{
+						goods_id: 2,
+						goods_name: "苹果",
+						num: 3
+					},
+					{
+						goods_id: 8,
+						goods_name: "西瓜",
+						num: 1
+					}
+				]
 			}
 		},
 		onLoad(option) {
 			console.log('option', option)
 			this.goodsDetail(option)
+			this.cartsInfo()
 		},
 		methods: {
+			// 获取购物车信息
+			cartsInfo() {
+				this.options[0].info = this.carts.length
+			},
 			onClick(e) {
 				console.log("onClick", e)
+				// 调用购物车的接口
 				this.$refs.cart.open('bottom')
 				uni.showToast({
 					title: `点击${e.content.text}`,
 					icon: 'none'
 				})
 			},
+			// 加入购物车或立即购买
 			buttonClick(e) {
 				console.log("buttonClick", e)
-				this.options[0].info++
 
-				this.$refs.popup.open('bottom')
+				if (e.content.text == '立即购买') {
+					this.$refs.popup.open('bottom')
+				} else {
+					// 判断购物车中是否存在此商品
+					// 如存在,则不增加
+					let ids = []
+					this.carts.map(item => {
+						ids.push(item.goods_id)
+					})
+
+					if (ids.indexOf(this.goods.id) != -1) {
+						uni.showToast({
+							title: `购物车中已存在`,
+							icon: 'none'
+						})
+					} else {
+						// 插入购物车
+						this.carts.push({
+							goods_id: this.goods.id,
+							goods_name: "",
+							num: 1
+						})
+
+						uni.showToast({
+							title: `已加入购物车`,
+							icon: 'none'
+						})
+						this.options[0].info++
+					}
+
+
+				}
+
 			},
 			goodsDetail(data) {
 				this.$api.getGoodsDetail(data).then(
@@ -126,16 +209,21 @@
 					fail => {}
 				)
 			},
+			// 更改数量
 			changeNum(e) {
 				this.buy_num = e
 				console.log(e)
 			},
+			// 立即购买
 			confirmOrder(e) {
 				let that = this
 				console.log(this.goods, this.buy_num)
 				let userInfo = uni.getStorageSync("userInfo")
 				let goods = []
-				goods.push({goods_id: this.goods.id, num: this.buy_num})
+				goods.push({
+					goods_id: this.goods.id,
+					num: this.buy_num
+				})
 				let data = {
 					goods: goods,
 					user_id: userInfo.id
@@ -155,9 +243,11 @@
 						})
 					}
 				)
-				
-				
-			}
+
+
+			},
+			clear() {},
+			cartOrder() {}
 		}
 	}
 </script>
@@ -234,13 +324,18 @@
 		height: 100px;
 		padding: 40rpx;
 	}
-	
+
 	.buy_num {
 		height: 60rpx;
 		line-height: 60rpx;
 	}
-	
+
 	.confirm_order {
 		margin-top: 30rpx;
+	}
+
+	.goods_list {
+		font-size: 28rpx;
+		padding: 10rpx auto;
 	}
 </style>

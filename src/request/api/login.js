@@ -4,11 +4,6 @@ import http from "../http"
 export default {
 	login: data => http("POST", "/login", data), // 登录
 	userDetail: data => http("POST", "/user/detail", data), // 用户信息
-	
-	
-	
-	
-	sendSmsCode: data => http("GET", "/apip/wxsp/v1/sendsms/sendsms", data), // 发送短信验证码
-	validateSmsCode: data => http("GET", "/apip/wxsp/v1/sendsms/wxspcheckverifycode", data), // 校验短信验证码
-	editPassword: data => http("POST", "/apip/wxsp/v1/wxspaccount/updatepassword", data), // 修改密码
+	userAdd: data => http("POST", "/user/add", data), // 用户注册
+	editPassword: data => http("POST", "/user/editpwd", data), // 用户密码修改
 }

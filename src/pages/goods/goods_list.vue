@@ -3,7 +3,7 @@
 		<uni-list>
 			<uni-list-item v-for="item in goods" :key="item.id" :title="item.name" :note="item.stock"
 				thumb="https://web-assets.dcloud.net.cn/unidoc/zh/unicloudlogo.png" thumb-size="lg"
-				:rightText="item.price"></uni-list-item>
+				:rightText="item.price" clickable @click="goodsDetail(item.id)"></uni-list-item>
 		</uni-list>
 	</view>
 </template>
@@ -60,6 +60,12 @@
 
 					})
 			},
+			
+			goodsDetail(id) {
+				uni.navigateTo({
+					url: "../goods/goods_detail?id=" + id
+				})
+			}
 
 		}
 	}

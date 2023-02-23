@@ -9,7 +9,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "楹环卫"
+				"navigationBarTitleText": "购物小程序"
 			}
 		},
 		{
@@ -18,71 +18,6 @@
 				"navigationBarTitleText": "商品列表"
 			}
 		},
-		{
-			"path": "pages/qualitys/report-record/report-record",
-			"style": {
-				"navigationBarTitleText": "上报记录",
-				"enablePullDownRefresh": false
-			}
-		},
-		{
-			"path": "pages/qualitys/report-record/handle",
-			"style": {
-				"navigationBarTitleText": "处理",
-				"enablePullDownRefresh": false
-			}
-		},
-		{
-			"path": "pages/qualitys/report-record/review",
-			"style": {
-				"navigationBarTitleText": "审查",
-				"enablePullDownRefresh": false
-			}
-		},
-		{
-			"path": "pages/qualitys/report-record/event-detail",
-			"style": {
-				"navigationBarTitleText": "事件详情",
-				"enablePullDownRefresh": false
-			}
-		},
-		{
-			"path": "pages/qualitys/create-report/create-report",
-			"style": {
-				"navigationBarTitleText": "创建上报",
-				"enablePullDownRefresh": false
-			}
-		},
-
-		{
-			"path": "pages/qualitys/create-report/choice-worker",
-			"style": {
-				"navigationBarTitleText": "选择环卫工",
-				"enablePullDownRefresh": false
-			}
-		},
-		{
-			"path": "pages/qualitys/create-report/choice-vehicle",
-			"style": {
-				"navigationBarTitleText": "选择环卫车",
-				"enablePullDownRefresh": false
-			}
-		},
-		{
-			"path": "pages/qualitys/create-report/nearby-sanitation-workers",
-			"style": {
-				"navigationBarTitleText": "附近环卫工或环卫车",
-				"enablePullDownRefresh": false
-			}
-		},
-		{
-			"path": "pages/qualitys/create-report/success-send",
-			"style": {
-				"navigationBarTitleText": "派遣成功",
-				"enablePullDownRefresh": false
-			}
-		},
-
 		{
 			"path": "pages/mine/mine",
 			"style": {
@@ -107,277 +42,33 @@
             
         }
         ,{
-            "path" : "pages/order/order_list/order_list",
-            "style" : {
-                "navigationBarTitleText": "我的订单"
+            "path" : "pages/index/register",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "注册",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/index/editpassword",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改密码",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/order/order",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的订单",
+                "enablePullDownRefresh": true
             }
             
         }
     ],
-	"subpackages": [{
-		"root": "template",
-		"pages": [{
-				"path": "vehicle/vehicle",
-				"style": {
-					"navigationBarTitleText": "车辆管理",
-					"enablePullDownRefresh": false,
-					"navigationBarBackgroundColor": "#fff"
-				}
-			},
-			{
-				"path": "vehicle/vehicle-work/vehicle-work",
-				"style": {
-					"navigationBarTitleText": "车辆列表",
-					"enablePullDownRefresh": false,
-					"navigationBarBackgroundColor": "#fff"
-				}
-			},
-			{
-				"path": "vehicle/vehicle-GIS/vehicle-GIS",
-				"style": {
-					"navigationBarTitleText": "车辆GIS",
-					"enablePullDownRefresh": false,
-					"navigationBarBackgroundColor": "#fff"
-				}
-			},
-			{
-				"path": "vehicle/vehicle-GIS/vehicle-video",
-				"style": {
-					"navigationBarTitleText": "查看视频",
-					"enablePullDownRefresh": false,
-					"navigationBarBackgroundColor": "#fff"
-				}
-			},
-			{
-				"path": "vehicle/vehicle-GIS/vehicle-position",
-				"style": {
-					"navigationBarTitleText": "查看定位",
-					"enablePullDownRefresh": false,
-					"navigationBarBackgroundColor": "#fff"
-				}
-			},
-			{
-				"path": "vehicle/vehicle-GIS/history-route",
-				"style": {
-					"navigationBarTitleText": "历史轨迹",
-					"enablePullDownRefresh": false,
-					"navigationBarBackgroundColor": "#fff"
-				}
-			},
-			{
-				"path": "personal/personal",
-				"style": {
-					"navigationBarTitleText": "人员管理",
-					"enablePullDownRefresh": false,
-					"navigationBarBackgroundColor": "#fff"
-				}
-			},
-			{
-				"path": "personal/personal-GIS/personal-GIS",
-				"style": {
-					"navigationBarTitleText": "人员GIS",
-					"enablePullDownRefresh": false,
-					"navigationBarBackgroundColor": "#fff"
-				}
-			},
-			{
-				"path": "personal/personal-work/personal-work-position",
-				"style": {
-					"navigationBarTitleText": "查看定位",
-					"enablePullDownRefresh": false,
-					"navigationBarBackgroundColor": "#fff"
-				}
-			},
-			{
-				"path": "personal/history-route",
-				"style": {
-					"navigationBarTitleText": "历史轨迹",
-					"enablePullDownRefresh": false,
-					"navigationBarBackgroundColor": "#fff"
-				}
-			},
-			{
-				"path": "personal/personal-work/personal-work",
-				"style": {
-					"navigationBarTitleText": "人员列表",
-					"enablePullDownRefresh": false,
-					"navigationBarBackgroundColor": "#fff"
-				}
-			},
-			{
-				"path": "collection/collection",
-				"style": {
-					"navigationBarTitleText": "收运管理",
-					"enablePullDownRefresh": false,
-					"navigationBarBackgroundColor": "#fff"
-				}
-			},
-			{
-				"path": "collection/collection-gis/collection-gis",
-				"style": {
-					"navigationBarTitleText": "设施GIS",
-					"enablePullDownRefresh": false,
-					"navigationBarBackgroundColor": "#fff"
-				}
-			},
-			{
-				"path": "collection/collection-gis/collection-gis-list",
-				"style": {
-					"navigationBarTitleText": "设施列表模式",
-					"enablePullDownRefresh": true,
-					"navigationBarBackgroundColor": "#fff"
-				}
-			},
-			{
-				"path": "collection/collection-gis/collection-gis-operation",
-				"style": {
-					"navigationBarTitleText": "环卫设施",
-					"enablePullDownRefresh": false,
-					"navigationBarBackgroundColor": "#fff"
-				}
-			},
-			{
-				"path": "collection/collection-work/collection-work",
-				"style": {
-					"navigationBarTitleText": "当日作业车辆",
-					"enablePullDownRefresh": false,
-					"navigationBarBackgroundColor": "#fff"
-				}
-			},
-			{
-				"path": "collection/collection-work/collection-work-progress",
-				"style": {
-					"navigationBarTitleText": "收运进度",
-					"enablePullDownRefresh": false,
-					"navigationBarBackgroundColor": "#fff"
-				}
-			},
-			{
-				"path": "oil/index/index",
-				"style": {
-					"navigationBarTitleText": "加油管理",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "oil/oilstation/oilstation",
-				"style": {
-					"navigationBarTitleText": "车辆加油",
-					"enablePullDownRefresh": false
-				}
-			},
-
-			{
-				"path": "oil/oilprice/oilprice",
-				"style": {
-					"navigationBarTitleText": "维护油价",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "oil/pricehistory/pricehistory",
-				"style": {
-					"navigationBarTitleText": "油价记录",
-					"enablePullDownRefresh": true
-				}
-			},
-			{
-				"path": "oil/addoil/vehicleinfo",
-				"style": {
-					"navigationBarTitleText": "车辆加油",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "oil/addoil/addoil",
-				"style": {
-					"navigationBarTitleText": "车辆加油",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "oil/addoil/electronic_signature",
-				"style": {
-					"navigationBarTitleText": "电子签名",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "oil/addoilrecords/addoilrecords",
-				"style": {
-					"navigationBarTitleText": "加油记录",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "oil/addoilrecords/addoildetail",
-				"style": {
-					"navigationBarTitleText": "加油记录详情",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "oil/card/card",
-				"style": {
-					"navigationBarTitleText": "油卡管理",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "oil/card/charge",
-				"style": {
-					"navigationBarTitleText": "油卡充值",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "oil/card/chargerecords",
-				"style": {
-					"navigationBarTitleText": "油卡交易记录",
-					"enablePullDownRefresh": true
-				}
-			},
-			{
-				"path": "maintenance/index",
-				"style": {
-					"navigationBarTitleText": "车辆维修",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "maintenance/apply-maintenance",
-				"style": {
-					"navigationBarTitleText": "维修申请",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "maintenance/maintenance-record",
-				"style": {
-					"navigationBarTitleText": "维修记录",
-					"enablePullDownRefresh": true
-				}
-			},
-			{
-				"path": "maintenance/success",
-				"style": {
-					"navigationBarTitleText": "",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "maintenance/maintenance-detail",
-				"style": {
-					"navigationBarTitleText": "维修详情",
-					"enablePullDownRefresh": false
-				}
-			}
-			
-
-		],
-
-		"independent": false
-	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
@@ -396,13 +87,13 @@
 				"pagePath": "pages/home/home",
 				"iconPath": "static/images/tab_home.png",
 				"selectedIconPath": "static/images/tab_home_s.png",
-				"text": "主页1"
+				"text": "主页"
 			},
 			{
 				"pagePath": "pages/mine/mine",
 				"iconPath": "static/images/tab_me.png",
 				"selectedIconPath": "static/images/tab_me_s.png",
-				"text": "我的1"
+				"text": "我的"
 			}
 		]
 	},
@@ -410,13 +101,8 @@
 	"easycom": {
 		"autoscan": true,
 		"custom": {
-			"lb-picker": "@/components/lb-picker/index.vue",
-			"ty-picker-frame": "@/components/ty-picker-frame/index.vue",
 			"liuyuno-tabs": "@/components/liuyuno-tabs/index.vue",
-			"xw-empty": "@/components/xw-empty/index.vue",
-			"ty-steps": "@/components/ty-steps/index.vue",
-			"drag-button": "@/components/drag-button/index.vue",
-			"uni-flv": "@/components/uni-flv/index.vue" 
+			"xw-empty": "@/components/xw-empty/index.vue"
 
 		}
 	}

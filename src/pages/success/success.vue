@@ -11,7 +11,7 @@
 		</view>
 		<view class="main">
 			<view class='form_list button flex-between'>
-				<button type="primary" @click="returnHomePage">返回首页</button>
+				<button type="primary" @click="returnHomePage">{{text}}</button>
 			</view>
 		</view>
 	</view>
@@ -22,13 +22,21 @@
 		data() {
 			return {
 				message: "修改成功!",
-				url: "../home/home"
+				url: "../home/home",
+				text: "返回首页",
+				redirect: ""
 			}
 		},
 		onLoad(option) {
 			// 成功页面返回提示
 			this.message = option.message || "修改成功!"
-			this.url = option.url || "../home/home"
+			this.redirect = option.redirect || ""
+			if (this.redirect == "login") {
+				this.url = "../index/index"
+				this.text = "返回登录"
+			} else {
+				this.url = option.url || "../home/home"
+			}
 		},
 		methods: {
 			// 返回首页
