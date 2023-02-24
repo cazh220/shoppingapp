@@ -15,10 +15,13 @@
 		<view class="main">
 			<view class="title">{{goods.name}}</view>
 			<view class="subtitle price">￥{{goods.price}}</view>
-			<view class="subtitle">还剩余：{{goods.num}}</view>
+			<view class="subtitle">还剩余库存：{{goods.num}}</view>
+		</view>
+		<view class="" style="height: 20rpx;border-bottom: dashed 1px #aaa;">
+			
 		</view>
 		<view class="content">
-			xxcxcxcxcxcxcxdsdssdsddsdsdssdsddsdssd
+			{{goods.desc}}
 		</view>
 
 

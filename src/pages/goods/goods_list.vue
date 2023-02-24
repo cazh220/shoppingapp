@@ -41,7 +41,8 @@
 			getGoods() {
 				let data = {
 					page: this.page,
-					name: ""
+					name: "",
+					state: 1
 				}
 				this.$api.getGoodsList(data).then(
 					res => {
