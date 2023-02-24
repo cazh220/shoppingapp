@@ -2,7 +2,7 @@
 	<view class="list">
 		<uni-list>
 			<uni-list-item v-for="item in goods" :key="item.id" :title="item.name" :note="item.stock"
-				thumb="https://web-assets.dcloud.net.cn/unidoc/zh/unicloudlogo.png" thumb-size="lg"
+				:thumb="item.thumb" thumb-size="lg"
 				:rightText="item.price" clickable @click="goodsDetail(item.id)"></uni-list-item>
 		</uni-list>
 	</view>
@@ -51,6 +51,7 @@
 							item.key = item.id
 							item.stock = "库存：" + item.num
 							item.price = "价格：￥" + item.price
+							item.thumb = "http://localhost:8080/"+item.pic
 							return item
 						})
 						this.goods.push(...goods)

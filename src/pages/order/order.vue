@@ -29,7 +29,7 @@
 								<uni-col :span="3" :offset="0">
 									<view class="">
 										<image style="width: 40px; height: 40px; background-color: #eeeeee;"
-											mode="scaleToFill" :src="src" @error="imageError"></image>
+											mode="scaleToFill" :src="items.pic" @error="imageError"></image>
 									</view>
 								</uni-col>
 								<uni-col :span="8" :offset="5">
@@ -159,9 +159,16 @@
 							} else {
 								item.state_txt = "待发货"
 							}
+							
+							let goods = item.goods.map(items => {
+								items.pic = "http://localhost:8080/"+items.pic
+								return items
+							})
+							item.goods = goods
+							
 							return item
 						})
-						
+						console.log(orders)
 						that.orders.push(...orders)
 					},
 					fail => {}

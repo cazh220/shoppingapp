@@ -104,10 +104,10 @@
 			return {
 				pics: [
 					{
-						src: 'https://web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg',
+						src: '../../static/ad1.jpg',
 					},
 					{
-						src: 'https://web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg',
+						src: '../../static/ad2.jpg',
 					}
 				],
 				// background: ['color1', 'color2', 'color3'],
