@@ -16,9 +16,11 @@
 				last_page: 1
 			}
 		},
-		onLoad(option) {},
-		onShow() {
+		onLoad(option) {
 			this.getGoods()
+		},
+		onShow() {
+			
 		},
 		onPullDownRefresh() {
 			this.goods = []
