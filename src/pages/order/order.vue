@@ -24,7 +24,7 @@
 								<view class="head_title" v-else>{{item.state_txt}}</view>
 							</uni-col>
 						</uni-row>
-						<view class="details" v-for="(items, indexs) in item.goods" :key="items.id">
+						<view class="details" v-for="items in item.goods" :key="items.id">
 							<uni-row class="" :gutter="gutter" :width="nvueWidth">
 								<uni-col :span="3" :offset="0">
 									<view class="">

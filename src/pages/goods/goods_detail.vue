@@ -59,7 +59,7 @@
 					<uni-section class="mb-10" title="购物车商品" titleColor="red" sub-title="" type="line">购物车商品
 					</uni-section>
 
-					<uni-row class="" :width="nvueWidth" v-for="item in carts">
+					<uni-row class="" :width="nvueWidth" v-for="item, index in carts" :key="index">
 						<uni-col :span="10">
 							<view class="goods_list">{{item.goods_name}}</view>
 						</uni-col>

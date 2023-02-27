@@ -1,0 +1,5 @@
+<!--components/empty/empty.wxml-->
+<view class='empty'>
+    <image class="empty-img" src="" mode="aspectFit" />
+    <view class="empty-text">暂无数据</view>
+</view>

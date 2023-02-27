@@ -1,0 +1,229 @@
+{
+  "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": true,
+    "lazyloadPlaceholderEnable": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "disableUseStrict": false,
+    "minifyWXML": true,
+    "showES6CompileOption": false,
+    "useCompilerPlugins": false,
+    "ignoreUploadUnusedFiles": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.22.1",
+  "appid": "wx178f83aa21984a5a",
+  "projectname": "zhaobiao-wxspsite",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "版本模式",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/repertory/repertory",
+          "pathName": "pages/repertory/repertory",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/stock/stock",
+          "pathName": "pages/stock/stock",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/login/login",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/inbound/list-inbound/list-inbound",
+          "pathName": "pages/inbound/list-inbound/list-inbound",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/inbound/inbound",
+          "pathName": "pages/inbound/inbound",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/inbound/list-inbound/list-inbound",
+          "pathName": "pages/inbound/list-inbound/list-inbound",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/inbound/trade-inbound/trade-inbound",
+          "pathName": "pages/inbound/trade-inbound/trade-inbound",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/exchange/site",
+          "pathName": "pages/exchange/site",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/outbound/list-outbound/list-outbound",
+          "pathName": "pages/outbound/list-outbound/list-outbound",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/outbound/add-outbound/add-outbound",
+          "pathName": "pages/outbound/add-outbound/add-outbound",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/outbound/list-outbound/list-outbound",
+          "pathName": "pages/outbound/list-outbound/list-outbound",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/mine/mine",
+          "pathName": "pages/mine/mine",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/common/tabbar/tabbar",
+          "pathName": "pages/common/tabbar/tabbar",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/guide/guide",
+          "pathName": "pages/guide/guide",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/purchase/scanuser/scanuser",
+          "pathName": "pages/purchase/scanuser/scanuser",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/purchase/delivery/delivery",
+          "pathName": "pages/purchase/delivery/delivery",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/quality/quality-list/quality-list",
+          "pathName": "pages/quality/quality-list/quality-list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/quality/quality-detail/quality-detail",
+          "pathName": "pages/quality/quality-detail/quality-detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/order/tare-order/tare-order",
+          "pathName": "pages/order/tare-order/tare-order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/uploader/upload",
+          "pathName": "pages/uploader/upload",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/order/tare-order/tare-order",
+          "pathName": "pages/order/tare-order/tare-order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/order/tare-order/tare-order",
+          "pathName": "pages/order/tare-order/tare-order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/reserve/reservecash/reservecash",
+          "pathName": "pages/reserve/reservecash/reservecash",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/reserve/reservecash-new/reservecash-new",
+          "pathName": "pages/reserve/reservecash-new/reservecash-new",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/reserve/test/test",
+          "pathName": "pages/reserve/test/test",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/login/login",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}
