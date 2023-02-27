@@ -1,0 +1,19 @@
+<!--components/popup.wxml-->
+<view class="popup">
+  <van-popup
+    show="{{ isShow }}"
+    round
+    bind:close="onClose"
+    custom-style="width:640rpx"
+   >
+    <view class="popup-title">{{title}}</view>
+    <slot name="subtitle"></slot>
+    <view class="content">
+      <slot></slot>
+    </view>
+    <view class="popup-footer">
+      <view bindtap="hidePopup">{{cancel}}</view>
+      <view bindtap="showPopup" class="confirm">{{confirm}}</view>
+    </view>
+   </van-popup>
+</view>

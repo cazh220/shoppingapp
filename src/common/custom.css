@@ -1,0 +1,36 @@
+/* 页面背景色自定义 */
+page {
+	background: #f5f5f5;
+}
+
+/* 表单插槽自定义 */
+// label宽度定制
+.form-label {
+	width: 90px;
+}
+
+// 配合UI样式调整
+.required-icon {
+	margin-right: 5px;
+	color: #7ccd1f;
+	vertical-align: middle;
+}
+
+/*  单选组件 样式自定义 */
+// 选中框和文字间距缩小
+.uni-data-checklist .checklist-group .checklist-box {
+	margin: 5px 10px 5px 0px ;
+}
+
+/* // 在form中位置较高,基于下面类名本事的相对定位 增加top高度
+.uni-data-checklist {
+	top: 5px;
+} */
+
+/* 按钮颜色配置 */
+.button-primary {
+	background-color: #77c81f;
+	color: #fff;
+}
+
+

@@ -1,0 +1,14 @@
+.empty{
+    text-align: center;
+    padding-top: 330rpx;
+}
+.empty-img{
+    width: 240rpx;
+    height: 150rpx;
+    display: inline-block;
+    margin: 0 auto;
+}
+.empty-text{
+    font-size: 32rpx;
+    color: #e8e8e8;
+}

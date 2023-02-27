@@ -1,0 +1,139 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/success/success",
+    "pages/trade/trade",
+    "pages/trade/scanuser/scanuser",
+    "pages/trade/warehousing/warehousing",
+    "pages/trade/wait-warehousing/wait-warehousing",
+    "pages/trade/warehousing-record/warehousing-record",
+    "pages/trade/warehousing-record/detail/detail",
+    "pages/trade/settlement/settlement",
+    "pages/inventory/inventory",
+    "pages/inventory/giftInventory/page",
+    "pages/inventory/giftRecord/page",
+    "pages/inventory/giftRecordDetail/page",
+    "pages/inventory/recyclingGoodsInventoryManagement/page",
+    "pages/integral/integral",
+    "pages/integral/integral-detaill/integral-detaill",
+    "pages/integral/info-confirm/info-confirm",
+    "pages/outbound/outbound",
+    "pages/outbound/add-outbound/add-outbound",
+    "pages/outbound/outbound-record/outbound-record",
+    "pages/trade/housing-estate/housing-estate",
+    "pages/switchsite/switchsite",
+    "pages/mine/mine",
+    "pages/check-in/check-in",
+    "pages/check-in/activity-detail/activity-detail",
+    "pages/scan/scan",
+    "pages/scan_success/scan_success",
+    "pages/scanInspect/scanInspect",
+    "pages/sign/sign",
+    "pages/vehicle/oil/add-oil/add-oil",
+    "pages/vehicle/oil/refueling-record/refueling-record",
+    "pages/vehicle/oil/driver-signature/driver-signature",
+    "pages/vehicle/mileage-record/mileage-record",
+    "pages/vehicle/vehicle",
+    "pages/activity/activity",
+    "pages/activity/add-activity/add-activity",
+    "pages/activity/activity-list/activity-list",
+    "pages/activity/activity-detail/activity-detail",
+    "pages/activity/edit-activity/edit-activity",
+    "pages/activity/activityGift-info/activityGift-info",
+    "pages/activity/activityGift-confirm/activityGift-confirm",
+
+
+
+    
+
+
+    "pages/vehicle/oil/refueling-record/detail/detail",
+    "pages/vehicle/gis/vehicle-gis",
+    "pages/vehicle/gis/vehicle-gis-list/vehicle-gis-list",
+    "pages/vehicle/repair/repair-apply/repair-apply",
+    "pages/vehicle/repair/repair-record/repair-record",
+    "pages/vehicle/repair/repair-detail/repair-detail",
+    "pages/vehicle/repair/repair-apply-result/repair-apply-result",
+    "pages/task/task",
+    "pages/trade/plot-select/plot-select",
+    "pages/task/task-detail/task-detail",
+    "pages/task/task-detail/task-resident/task-resident",
+    "pages/task/task-detail/task-static/task-static",
+    "pages/task/task-detail/task-gift/task-gift",
+    "pages/vehicle/gis/vehicle-track/vehicle-track",
+    "pages/trade/recycling/recycling",
+    "pages/records/query_records/query_records",
+    "pages/records/trade_detail/trade_detail",
+    "components/task-item/task-item",
+    "pages/task/task-detail/task-material/task-material",
+    "pages/task/task-detail/task-checkList/task-checkList",
+    "pages/resident-info/resident-info",
+    "pages/photoInspection/photoInspection",
+    "pages/resident-info/resident-detail/resident-detail",
+    "pages/resident-info/resident-detail/resident-order/resident-order",
+    "pages/resident-info/resident-detail/resident-exchange/resident-exchange",
+    "pages/resident-info/resident-add/resident-add",
+    "pages/resident-info/resident-success/resident-success",
+    "pages/resident-info/resident-detail/resident-binding/resident-binding",
+    "pages/map/nearby/nearby",
+    "pages/map/gis-collection/gis",
+    "pages/trade/recycle-detail/recycle-detail",
+    "components/grid-item/grid-item",
+    "pages/inventory/menu/menu",
+    "components/submenu/submenu",
+    "pages/map/gis-list/gis-list",
+    "pages/login/forget/forget",
+    "pages/login/success/success",
+    "pages/login/setupPwd/setupPwd",
+    "pages/task/task-detail/sign-list/sign-list",
+    "pages/task/task-detail/check-list/check-list",
+    "pages/resident-info/resident-detail/resident-code/resident-code"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#76BC21",
+    "navigationStyle": "default",
+    "navigationBarTitleText": "绿色分类",
+    "navigationBarTextStyle": "white",
+    "restartStrategy": "homePage"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#4F88F7",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/icon/home.png",
+        "selectedIconPath": "static/icon/home@selected.png",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/scan/scan",
+        "text": ""
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "static/icon/my.png",
+        "selectedIconPath": "static/icon/my@selected.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-toast": "./lib/toast/index"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "chooseLocation"
+  ],
+  "sitemapLocation": "sitemap.json"
+}
